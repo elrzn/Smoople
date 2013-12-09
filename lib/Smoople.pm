@@ -1,8 +1,7 @@
 package Smoople;
 
-use 5.006;
-use strict;
-use warnings FATAL => 'all';
+use Moose;
+use namespace::autoclean;
 
 =head1 NAME
 
@@ -33,21 +32,32 @@ Perhaps a little code snippet.
 A list of functions that can be exported.  You can delete this section
 if you don't export anything, such as for a purely object-oriented module.
 
+=head1 ATTRIBUTES
+
+=cut
+
+has 'tables', is => 'rw', isa => 'ArrayRef[Smoople::Table]';
+
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
-
 =cut
 
-sub function1 {
+sub _make_table
+{ my ($self, %p) = @_;
+  Smoople::Table->new(name => $p{name}, columns => $p{columns});
 }
 
-=head2 function2
-
-=cut
-
-sub function2 {
+sub create_table
+{ my ($self, %p) = @_;
+  $self->tables([@{$self->tables || []}, $self->_make_table(%p)]);
 }
+
+sub table
+{ my ($self, $name) = @_;
+  [grep { $_->name eq $name } @{$self->tables}]->[0];
+}
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 AUTHOR
 
