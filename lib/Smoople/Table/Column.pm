@@ -3,7 +3,7 @@ use Moose;
 use namespace::autoclean;
 
 has 'name', is => 'ro', isa => 'Str';
-has 'data', is => 'rw', isa => 'Any';
+has 'data', is => 'rw', isa => 'ArrayRef[Any]';
 
 sub add
 { my $self = shift;
