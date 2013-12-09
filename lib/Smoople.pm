@@ -4,7 +4,7 @@ use namespace::autoclean;
 
 has 'tables', is => 'rw', isa => 'ArrayRef[Smoople::Table]';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub _make_table
 { my ($self, %p) = @_;
