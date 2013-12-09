@@ -1,6 +1,8 @@
 package Smoople;
 use Moose;
 use namespace::autoclean;
+use Smoople::Table;
+use Smoople::Table::Column;
 
 has 'defaults', is => 'ro', isa => 'ArrayRef[Str]', default => sub { [qw(_id _ts)] };
 has 'tables', is => 'rw', isa => 'ArrayRef[Smoople::Table]';

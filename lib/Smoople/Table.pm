@@ -1,6 +1,7 @@
 package Smoople::Table;
 use Moose;
 use namespace::autoclean;
+use Smoople::Table::Record;
 use List::Util qw(max);
 
 has 'name',    is => 'ro', isa => 'Str';
