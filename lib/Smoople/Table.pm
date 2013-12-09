@@ -13,9 +13,7 @@ sub insert
   for my $index (0 .. $last)
   { my %params = map { $_ => $p{$_}->[$index] } keys %p;
     my $record = Smoople::Table::Record->new(data => \%params);
-    for my $column (@columns)
-    { $column->add($record->data->{$column->name});
-    }
+    $_->add($record->data->{$_->name}) for @columns;
   }
   $self->columns(\@columns);
 }
