@@ -4,14 +4,13 @@ use namespace::autoclean;
 use Smoople::Table;
 use Smoople::Table::Column;
 
-has 'defaults', is => 'ro', isa => 'ArrayRef[Str]', default => sub { [qw(_id _ts)] };
 has 'tables', is => 'rw', isa => 'ArrayRef[Smoople::Table]';
 
 our $VERSION = '0.02';
 
 sub _make_table
 { my ($self, %p) = @_;
-  my @cols = map { Smoople::Table::Column->new(name => $_) } (@{$self->defaults}, @{$p{columns}});
+  my @cols = map { Smoople::Table::Column->new(name => $_) } @{$p{columns}};
   Smoople::Table->new(name    => $p{name},
                       columns => \@cols);
 }
