@@ -1,4 +1,5 @@
 Smoople
 =======
 
-An in-memory, time-series, column-based and what-not storage with lots of problems.
+An ad hoc, informally-specified, bug-ridden, slow attemp at an
+in-memory, time-series, column-based, what-not storage

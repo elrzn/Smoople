@@ -1,16 +1,18 @@
 package Smoople;
 use Moose;
 use namespace::autoclean;
+use Smoople::Table;
+use Smoople::Table::Column;
 
 has 'tables', is => 'rw', isa => 'ArrayRef[Smoople::Table]';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub _make_table
 { my ($self, %p) = @_;
-  my @default = qw(_id _ts);
+  my @cols = map { Smoople::Table::Column->new(name => $_) } @{$p{columns}};
   Smoople::Table->new(name    => $p{name},
-                      columns => [map { Smoople::Table::Column->new(name => $_) } (@default, @{$p{columns}})]);
+                      columns => \@cols);
 }
 
 sub create_table

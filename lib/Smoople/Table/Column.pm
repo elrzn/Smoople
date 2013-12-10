@@ -6,8 +6,10 @@ has 'name', is => 'ro', isa => 'Str';
 has 'data', is => 'rw', isa => 'ArrayRef[Any]';
 
 sub add
-{ my $self = shift;
-  $self->data([@_, @{$self->data || []}]);
+{ my ($self, @xs) = @_;
+  my @data = @{$self->data || []};
+  unshift @data, @xs;
+  $self->data(\@data);
 }
 
 __PACKAGE__->meta->make_immutable;
