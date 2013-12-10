@@ -1,0 +1,9 @@
+-gnu
+-i=2
+-bbvt=2
+-ci=1
+-tso
+-dsm
+-iscl
+-vt=2
+-vtc=2
