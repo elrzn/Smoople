@@ -6,7 +6,7 @@ use Smoople::Table::Column;
 
 has 'tables', is => 'rw', isa => 'ArrayRef[Smoople::Table]';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub _make_table
 { my ($self, %p) = @_;
