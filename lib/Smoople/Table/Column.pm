@@ -8,7 +8,7 @@ has 'data', is => 'rw', isa => 'ArrayRef[Any]';
 sub add
 { my ($self, @xs) = @_;
   my @data = @{$self->data || []};
-  unshift @xs, @data;
+  unshift @data, @xs;
   $self->data(\@data);
 }
 
